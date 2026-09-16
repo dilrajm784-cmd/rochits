@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROCHIT SINGH STOCKS ( SEBI REGISTERED )
-
-</title>
+    <title>ROCHIT SINGH STOCKS</title>
 
     <!-- ========================================== -->
     <!-- 1. META PIXEL & TRACKING CODE (START) -->
@@ -21,14 +19,14 @@
       'https://connect.facebook.net/en_US/fbevents.js');
       
       // Facebook Pixel ID
-      fbq('init', '29610666158558838'); 
+      fbq('init', '1358240658765509'); 
       
       // PageView Event
       fbq('track', 'PageView');
     </script>
     <noscript>
       <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=29610666158558838&ev=PageView&noscript=1"/>
+           src="https://www.facebook.com/tr?id=1358240658765509&ev=PageView&noscript=1"/>
     </noscript>
     <!-- ========================================== -->
     <!-- META PIXEL CODE (END) -->
@@ -59,23 +57,9 @@
             background: linear-gradient(180deg, #051a14 0%, #030d0a 100%);
             border: 2px solid #00f5a0;
             border-radius: 36px;
-            padding: 25px 18px;
+            padding: 35px 18px 25px 18px;
             text-align: center;
             box-shadow: 0 0 30px rgba(0, 245, 160, 0.35), inset 0 0 20px rgba(0, 245, 160, 0.15);
-        }
-
-        /* SEBI Badge Header */
-        .sebi-badge {
-            display: inline-block;
-            background-color: rgba(0, 245, 160, 0.1);
-            border: 1px solid rgba(0, 245, 160, 0.4);
-            color: #00f5a0;
-            font-size: 13px;
-            font-weight: 700;
-            padding: 8px 18px;
-            border-radius: 50px;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
         }
 
         /* Profile Image Section */
@@ -107,19 +91,8 @@
             font-weight: 900;
             letter-spacing: 1px;
             line-height: 1.2;
-            margin-bottom: 4px;
-            color: #ffffff;
-        }
-
-        .sub-name {
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            line-height: 1.2;
             margin-bottom: 16px;
-            background: linear-gradient(90deg, #00f5a0, #00d9f5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #ffffff;
         }
 
         /* Sub-description */
@@ -208,21 +181,64 @@
             box-shadow: 0 0 25px rgba(0, 245, 160, 0.4);
             letter-spacing: 0.5px;
             transition: transform 0.2s;
+            cursor: pointer;
+            margin-bottom: 20px;
         }
 
         .join-btn:active {
             transform: scale(0.98);
+        }
+
+        /* Risk Disclaimer Box */
+        .disclaimer-box {
+            background-color: rgba(30, 10, 10, 0.6);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            border-radius: 16px;
+            padding: 14px;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .disclaimer-title {
+            color: #ff4d4d;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .disclaimer-text {
+            color: #b0b0b0;
+            font-size: 11.5px;
+            line-height: 1.5;
+        }
+
+        /* Agency Footer Bar */
+        .agency-bar {
+            border: 1px solid rgba(0, 245, 160, 0.3);
+            border-radius: 50px;
+            padding: 10px;
+            font-size: 13px;
+            color: #ffffff;
+            background-color: rgba(2, 20, 14, 0.5);
+        }
+
+        .agency-bar a {
+            color: #00f5a0;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .agency-bar a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
     <div class="card-container">
-        
-        <!-- SEBI Tag -->
-        <div class="sebi-badge">
-            SEBI Registered Research Analyst
-        </div>
 
         <!-- Profile Image -->
         <div class="profile-sec">
@@ -232,10 +248,7 @@
         </div>
 
         <!-- Name Title -->
-        <div class="main-name">ROCHIT SINGH STOCKS)
-
-</div>
-        <div class="sub-name">  ( SEBI REGISTERED</div>
+        <div class="main-name">ROCHIT SINGH STOCKS</div>
 
         <!-- Sub Title / Analysis Info -->
         <div class="sub-desc">
@@ -249,8 +262,8 @@
                 <div class="lbl">Members</div>
             </div>
             <div class="stat-card">
-                <div class="val">SEBI</div>
-                <div class="lbl">Registered</div>
+                <div class="val">DAILY</div>
+                <div class="lbl">Updates</div>
             </div>
             <div class="stat-card">
                 <div class="val">FREE</div>
@@ -282,24 +295,53 @@
         </div>
 
         <!-- Main Join Telegram Button -->
-        <a id="telegramLink" href="https://t.me/+QEkWSlFHL203OGM1" class="join-btn" onclick="trackButtonClick()">
+        <a id="telegramLink" class="join-btn" onclick="trackButtonClick()">
             🚀 JOIN TELEGRAM FREE
         </a>
 
+        <!-- Risk Disclaimer & Policy Box -->
+        <div class="disclaimer-box">
+            <div class="disclaimer-title">
+                ⚠️ RISK DISCLAIMER & POLICY
+            </div>
+            <div class="disclaimer-text">
+                Stock market and Options trading (F&O) involve high financial risk. 90% of individual traders in F&O incur losses. The content shared on this channel is for educational and research purposes only. Please consult your Financial Advisor before investing or trading.
+            </div>
+        </div>
+
+        <!-- Agency Credit Footer -->
+        <div class="agency-bar">
+            This Channel Advertise By <a href="https://t.me/+mp524qElHEQ2YWU1" target="_blank">elite marketing Agency</a>
+        </div>
+
     </div>
 
-    <!-- JavaScript - Pixel Tracking (Subscribe Event) -->
+    <!-- JavaScript - Pixel Tracking & Single Click Prevention -->
     <script>
-        let telegramUrl = "https://t.me/+QEkWSlFHL203OGM1"; 
+        var isClicked = false; 
+        var telegramUrl = "https://t.me/+QEkWSlFHL203OGM1"; 
 
-        // Set URL dynamically
-        document.getElementById("telegramLink").href = telegramUrl;
-
-        // Button Click Tracking (Subscribe Event Fire)
         function trackButtonClick() {
-            if(typeof fbq !== 'undefined') {
-                fbq('trackCustom', 'TelegramBtnClick'); 
-                fbq('track', 'Subscribe'); 
+            if (!isClicked) {
+                isClicked = true;
+
+                // 1. Facebook Pixel Events
+                if (typeof fbq !== 'undefined') {
+                    fbq('trackCustom', 'TelegramBtnClick'); 
+                    fbq('track', 'Subscribe'); 
+                }
+
+                // 2. Visually disable button
+                var btn = document.getElementById('telegramLink');
+                if (btn) {
+                    btn.style.pointerEvents = 'none';
+                    btn.style.opacity = '0.7';
+                }
+
+                // 3. Redirect to Telegram
+                setTimeout(function() {
+                    window.location.href = telegramUrl;
+                }, 300);
             }
         }
     </script>
