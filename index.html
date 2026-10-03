@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROCHIT SINGH STOCKS</title>
 
+    <!-- FontAwesome Icons Support (Loader & Icons ke liye) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- ========================================== -->
     <!-- 1. META PIXEL & TRACKING CODE (START) -->
     <!-- ========================================== -->
@@ -19,14 +22,14 @@
       'https://connect.facebook.net/en_US/fbevents.js');
       
       // Facebook Pixel ID
-      fbq('init', '3670688969762295'); 
+      fbq('init', '1770165284003162'); 
       
       // PageView Event
       fbq('track', 'PageView');
     </script>
     <noscript>
       <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=3670688969762295&ev=PageView&noscript=1"/>
+           src="https://www.facebook.com/tr?id=1770165284003162&ev=PageView&noscript=1"/>
     </noscript>
     <!-- ========================================== -->
     <!-- META PIXEL CODE (END) -->
@@ -234,6 +237,20 @@
         .agency-bar a:hover {
             text-decoration: underline;
         }
+
+        /* Utility Helpers */
+        .hidden { display: none !important; }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .w-full { width: 100%; }
+        .gap-2 { gap: 8px; }
+        .text-center { text-align: center; }
+        .animate-spin { animation: spin 1s linear infinite; }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -316,34 +333,61 @@
 
     </div>
 
-    <!-- JavaScript - Pixel Tracking & Single Click Prevention -->
+    <!-- Updated JavaScript - Pixel Tracking, Session Storage & Redirect Logic -->
     <script>
-        var isClicked = false; 
         var telegramUrl = "https://t.me/+QEkWSlFHL203OGM1"; 
 
         function trackButtonClick() {
-            if (!isClicked) {
-                isClicked = true;
+            var btn = document.getElementById('telegramLink');
 
-                // 1. Facebook Pixel Events
-                if (typeof fbq !== 'undefined') {
-                    fbq('trackCustom', 'TelegramBtnClick'); 
-                    fbq('track', 'Subscribe'); 
-                }
+            // 1. Check: क्या यूजर इस ब्राउज़र सेशन में पहले ही क्लिक कर चुका है?
+            if (sessionStorage.getItem('telegram_clicked') === 'true') {
+                // अगर पहले से क्लिक हो चुका है, तो Meta Pixel FIRE नहीं होगा!
+                // सीधे तुरंत Telegram पर भेज दिया जाएगा।
+                window.location.href = telegramUrl;
+                return;
+            }
 
-                // 2. Visually disable button
-                var btn = document.getElementById('telegramLink');
-                if (btn) {
-                    btn.style.pointerEvents = 'none';
-                    btn.style.opacity = '0.7';
-                }
+            // 2. अगर यह पहला क्लिक है, तो ब्राउज़र की मेमोरी (sessionStorage) में लॉक कर दें
+            sessionStorage.setItem('telegram_clicked', 'true');
 
-                // 3. Redirect to Telegram
-                setTimeout(function() {
-                    window.location.href = telegramUrl;
-                }, 300);
+            // 3. Meta Pixel Conversion Events (सिर्फ 1 बार ही ट्रिगर होंगे)
+            if (typeof fbq !== 'undefined') {
+                fbq('trackCustom', 'TelegramBtnClick'); 
+                fbq('track', 'Subscribe'); 
+                fbq('track', 'Lead'); 
+            }
+
+            // 4. बटन को विजुअली डिसेबल (Disable) कर दें
+            if (btn) {
+                btn.style.pointerEvents = 'none'; // क्लिक्स ब्लॉक
+                btn.style.opacity = '0.7';       // हल्का धुंधला
+                btn.innerHTML = '<span class="text-center w-full flex items-center justify-center gap-2"><i class="fa-solid fa-spinner animate-spin"></i> Connecting...</span>';
+            }
+
+            // 5. Redirection Delay (300ms ताकि Meta Pixel Data को सेंड कर सके)
+            setTimeout(function() {
+                window.location.href = telegramUrl;
+            }, 300);
+        }
+
+        // Toggle Modal Helper Functions
+        function toggleModal(modalId) {
+            var modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.toggle('hidden');
             }
         }
+
+        // अगर यूजर Back बटन दबाकर वापस आए, तो बटन नॉर्मल कर दें लेकिन Click Count 1 ही रहेगा
+        window.addEventListener('pageshow', function() {
+            var btn = document.getElementById('telegramLink');
+            if (btn && sessionStorage.getItem('telegram_clicked') === 'true') {
+                btn.style.pointerEvents = 'auto';
+                btn.style.opacity = '1';
+                btn.innerHTML = '🚀 JOIN TELEGRAM FREE';
+            }
+        });
     </script>
 
 </body>
